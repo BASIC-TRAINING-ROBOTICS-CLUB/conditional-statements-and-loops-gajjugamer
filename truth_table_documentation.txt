@@ -1,0 +1,79 @@
+# C++ Logical Expression Truth Table Generator
+
+## Overview
+
+This C++ program generates a truth table for logical expressions involving basic logical operations. The supported operations include AND, OR, NAND, NOR, XOR, XNOR, and NOT. The program reads a logical expression from the user and prints out the corresponding truth table for all possible combinations of binary values (`0` and `1`).
+
+## Components
+
+### 1. Headers
+
+The program includes the following headers:
+- `<iostream>`: Used for input and output operations.
+- `<string>`: Provides support for using `std::string`.
+- `<cctype>`: Includes character handling functions, though it's used here for `isspace` in `remove_if`.
+- `<algorithm>`: Provides algorithms like `remove_if` used to manipulate strings.
+
+### 2. Base Class `LogicalOperation`
+
+The base class `LogicalOperation` defines a common interface for all logical operations. It contains a pure virtual function `evaluate` that must be overridden by derived classes. The function takes two boolean inputs and returns a boolean result.
+
+### 3. Derived Classes for Logical Operations
+
+Each of these classes inherits from `LogicalOperation` and implements the `evaluate` method for a specific logical operation.
+
+#### AND Operation
+
+The `AndOperation` class returns the logical AND of inputs `a` and `b`. It overrides the `evaluate` method to perform this operation.
+
+#### OR Operation
+
+The `OrOperation` class returns the logical OR of inputs `a` and `b`. It overrides the `evaluate` method to perform this operation.
+
+#### NOT Operation
+
+The `NotOperation` class returns the logical NOT of input `a`. The `b` parameter is unused in this operation, as NOT is a unary operation.
+
+#### NAND Operation
+
+The `NandOperation` class returns the negation of the logical AND of inputs `a` and `b`. It overrides the `evaluate` method to perform this operation.
+
+#### NOR Operation
+
+The `NorOperation` class returns the negation of the logical OR of inputs `a` and `b`. It overrides the `evaluate` method to perform this operation.
+
+#### XOR Operation
+
+The `XorOperation` class returns true if exactly one of the inputs `a` or `b` is true (exclusive OR). It overrides the `evaluate` method to perform this operation.
+
+#### XNOR Operation
+
+The `XnorOperation` class returns true if both inputs `a` and `b` are the same (exclusive NOR). It overrides the `evaluate` method to perform this operation.
+
+### 4. Function `printTruthTable`
+
+The `printTruthTable` function generates and prints the truth table for the given logical expression. 
+
+- It creates instances of all logical operation classes.
+- It iterates over all possible combinations of `A` and `B` (0 and 1).
+- It checks which logical operation to apply based on the expression.
+- It outputs the results in a tabular format.
+
+The function handles expressions containing:
+- `&` for AND
+- `|` for OR
+- `~` for NAND
+- `@` for NOR
+- `^` for XOR
+- `=` for XNOR
+- `!` for NOT
+
+### 5. `main` Function
+
+The `main` function serves as the entry point of the program:
+
+- It prompts the user to enter a logical expression.
+- It removes any spaces from the input expression.
+- It calls `printTruthTable` to generate and display the truth table.
+
+Thats it. Thank You for reading!
